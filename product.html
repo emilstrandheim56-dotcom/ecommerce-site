@@ -1,0 +1,56 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header>
+<h1>Tech Store</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="cart.html">Cart</a>
+</nav>
+</header>
+
+<main id="product-detail"></main>
+
+<footer>
+<p>© 2026 Tech Store</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
+
+<script>
+
+// Get product id from URL
+const params = new URLSearchParams(window.location.search)
+const id = parseInt(params.get("id"))
+
+const product = products.find(p => p.id === id)
+
+const container = document.getElementById("product-detail")
+
+if(product){
+
+container.innerHTML = `
+<h2>${product.name}</h2>
+<img src="${product.image}">
+<p>${product.description}</p>
+<h3>$${product.price}</h3>
+<button onclick="addToCart(${product.id})">Add to Cart</button>
+`
+
+}
+
+</script>
+
+</body>
+</html>
